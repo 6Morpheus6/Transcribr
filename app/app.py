@@ -15,6 +15,7 @@ import shutil
 import sys
 import tempfile
 import traceback
+import warnings
 from datetime import datetime
 
 import gradio as gr
@@ -38,6 +39,12 @@ OUTPUT_FORMATS = ["txt", "srt", "vtt", "json"]
 FFMPEG_EXE = imageio_ffmpeg.get_ffmpeg_exe()
 os.environ.setdefault("PATH", "")
 os.environ["PATH"] = os.path.dirname(FFMPEG_EXE) + os.pathsep + os.environ["PATH"]
+
+# ---------------------------------------------------------------------------
+# Warnings
+# ---------------------------------------------------------------------------
+
+warnings.filterwarnings("ignore", category=Warning)
 
 # ---------------------------------------------------------------------------
 # Model cache
